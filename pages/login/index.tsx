@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Button";
+import { StyledLogin } from "./login.styles";
 
 const Login = () => {
   const router = useRouter();
@@ -26,23 +29,26 @@ const Login = () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
+    <StyledLogin>
+      <h1>Login Employees App</h1>
+      <form className="form" onSubmit={handleSubmit}>
+        <Input
+        className="input"
           type="email"
           name="email"
           placeholder="email"
           onChange={handleChange}
         />
-        <input
+        <Input
+        className="input"
           type="password"
           name="password"
           placeholder="password"
           onChange={handleChange}
         />
-        <button>Login</button>
+        <Button className="button"><i className="fa-solid fa-unlock"></i> Login</Button>
       </form>
-    </div>
+    </StyledLogin>
   );
 };
 
