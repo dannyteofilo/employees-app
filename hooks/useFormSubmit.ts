@@ -1,23 +1,27 @@
 import { useAppContext } from "../context/AppContext";
 import { addEmployee, getEmployees } from "../helpers/request";
-import { Employees } from "../interfaces/employees";
+import { EmployeesInterface } from "../interfaces/employees";
 import { dateUtil } from "../utils/date";
 
 export const useFormSubmit = () => {
-  const { data, setData } = useAppContext();
+  const { setData, setLoading } = useAppContext();
 
   const handleGetEmployees = () => {
+    setLoading(true);
     getEmployees().then((resp) => {
       const { data } = resp;
       setData(data.employees);
+      setLoading(false);
     });
   };
 
-  const handleAddEmployee = (form: Employees) => {
+  const handleAddEmployee = (form: EmployeesInterface) => {
     const { birthday } = form;
+    setLoading(true);
     addEmployee({ ...form, birthday: dateUtil(birthday) }).then((resp) => {
       if (resp.success) {
         handleGetEmployees();
+        setLoading(false);
       }
     });
   };

@@ -1,6 +1,6 @@
-export interface Employees{
+export interface EmployeesInterface{
     id:number
     name:string
     last_name:string
-    birthday:number
+    birthday:string
 }

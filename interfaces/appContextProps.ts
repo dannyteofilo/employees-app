@@ -1,8 +1,10 @@
 import { Dispatch } from "react";
-import { Employees } from "./employees";
+import { EmployeesInterface } from "./employees";
 import { User } from "./user";
 
 export interface AppContextProps {
-  data: Array<Employees>;
-  setData: Dispatch<Array<Employees>>;
+  data: Array<EmployeesInterface>;
+  setData: Dispatch<Array<EmployeesInterface>>;
+  setLoading: Dispatch<boolean>;
+  loading: boolean;
 }
